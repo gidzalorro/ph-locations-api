@@ -1,6 +1,11 @@
 const swaggerJsDoc = require('swagger-jsdoc');
 const swaggerUI = require('swagger-ui-express');
 
+let serverUrl = 'http://localhost:3001';
+if(process.env.ENV === 'PROD'){
+    serverUrl = 'https://ph-locations-api.onrender.com'
+}
+
 const options = {
     definition: {
         openapi: '3.0.3',
@@ -14,7 +19,7 @@ const options = {
         },
         servers: [
             {
-                url: 'http://localhost:3001'
+                url: serverUrl
             }
         ]
     },

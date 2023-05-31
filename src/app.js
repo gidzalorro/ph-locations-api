@@ -9,7 +9,7 @@ const swaggerSpec = swaggerApi.swaggerSpec;
 const app = express();
 app.use(express.json());
 
-app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerSpec))
+app.use('/', swaggerUI.serve, swaggerUI.setup(swaggerSpec))
 
 const port = process.env.NODE_PORT || 3000;
 
@@ -189,11 +189,13 @@ app.get('/ph/geo/barangays', async(req, res) => {
 });
 
 
-app.listen(port, () => {
-    mongoCxn.run((client, error) => {
+app.listen(port, async() => {
+    await mongoCxn.run((client, error) => {
         if(error) throw error;
         const database = client.db("phlocationsdb");
         reqRes.setDb(database);
         console.log(`API is ready in ${process.env.ENV} and connected on port ${port}`)
+    }).catch(e => {
+        console.log(e);
     });
 });
