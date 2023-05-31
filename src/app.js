@@ -9,13 +9,13 @@ const swaggerSpec = swaggerApi.swaggerSpec;
 const app = express();
 app.use(express.json());
 
-app.use('/', swaggerUI.serve, swaggerUI.setup(swaggerSpec))
+app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerSpec))
 
 const port = process.env.NODE_PORT || 3000;
 
 /**
  * @swagger
- * /ph/geo:
+ * /:
  *  get:
  *      summary: Greetings Path
  *      description: Retrieve version and author
@@ -23,11 +23,12 @@ const port = process.env.NODE_PORT || 3000;
  *          200:
  *              description: successful response
  */
-app.get('/ph/geo', (req, res) => {
+app.get('/', (req, res) => {
     const welcome = {
-        message: "Hello from PH addresses API",
+        message: "Hello from PH locations API",
         version: process.env.npm_package_version,
-        author: "g.d.alorro"
+        author: "g.d.alorro",
+        swagger: '/api-docs'
     }
     res.send(welcome)
 });
