@@ -1,0 +1,6 @@
+#node modules pkgs
+/node_modules
+
+#Environment file
+/.env
+
