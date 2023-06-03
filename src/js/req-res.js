@@ -24,7 +24,7 @@ const createResponse = async(collectionName, query, page, limit) => {
             data['region_code'] = 1;
             data['province_code'] = 1;
             break;
-        case 'brangays':
+        case 'barangays':
             data['region_code'] = 1;
             data['province_code'] = 1;
             data['city_code'] = 1;

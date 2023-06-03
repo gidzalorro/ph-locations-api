@@ -9,9 +9,9 @@ const swaggerSpec = swaggerApi.swaggerSpec;
 
 const app = express();
 app.use(express.json());
-app.use(cors())
+app.use(cors());
 
-app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerSpec))
+app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerSpec));
 
 const port = process.env.NODE_PORT || 3000;
 
